@@ -63,8 +63,10 @@
                 }
 
                 if (value === true) {
-                    this._liveSyncActive = true;
-                    this._setLiveSyncTimeout();
+                    if (!this._liveSyncActive) {
+                        this._liveSyncActive = true;
+                        this._setLiveSyncTimeout();
+                    }
                 } else {
                     this._liveSyncActive = false;
                 }

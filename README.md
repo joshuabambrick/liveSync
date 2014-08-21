@@ -5,6 +5,9 @@ A Backbone plugin which provides a means for a collection to make asynchronous c
 Backbone liveSync is a Backbone plugin which provides a means for collections to define a callback which is repeatedly called on a timer. Timers are set asynchronously so that each call to the callback receives a callback as a parameter to create the next timer. This is useful when working with functions that could potentially take a long time, such as making HTTP requests.
 
 ## Usage ##
+
+### Set Up liveSync With a Collection ###
+
 In order to use setMatch with any collection, simply define the `liveSync` property in the collection's declaration.
 
     var MyCollection = Backbone.Collection.extend({
@@ -29,6 +32,18 @@ If `asProperty` is defined as a string, an object will be created with the callb
 
 #### active (optional) ####
 `active` is a boolean that allows you to switch off liveSync. If liveSync has been defined in a collection's declaration then you will need to set the `active` property to false to disable liveSync.
+
+### Usage at Runtime ###
+liveSync also provides a number of methods for interaction with this plugin after instantiation of the collection. These can be called on the collection as `myCollectionInstance.getLiveSyncProperty()`.
+
+#### setLiveSyncProperty ####
+This method receives the name of a liveSync setting (which may be any of those which may be defined in the liveSync object in the collection's declaration), as the first parameter, and its new value, as the second parameter, to change the behaviour of the plugin at runtime. The setting `active` also accepts the value 'toggle' to swap between active and inactive states.
+
+#### getLiveSyncProperty ####
+This method receives the name of a liveSync setting and returns its value.
+
+#### liveSyncNow ####
+Call this method to force a call to the callback. If there is a currently set timer, then it will be cancelled - a new timer may be set after the callback passed is called.
 
 ## Example ##
 The example below fetches the models for a collection of potatoes. The contents are initialized on instantiation of the collection and updates will be tested for every 2 seconds after the previous HTTP request has responded.

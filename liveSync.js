@@ -119,7 +119,7 @@
                 callback = _.isFunction(callback) ? callback : function () {};
 
                 if (this._liveSyncAsProperty) {
-                    callbackArgument[_liveSyncAsProperty] = _.bind(this._setLiveSyncTimeout, this);
+                    callbackArgument[this._liveSyncAsProperty] = _.bind(this._setLiveSyncTimeout, this);
                 } else {
                     callbackArgument = _.bind(this._setLiveSyncTimeout, this);
                 }

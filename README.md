@@ -8,7 +8,7 @@ Backbone liveSync is a Backbone plugin which provides a means for collections to
 
 ### Set Up liveSync With a Collection ###
 
-In order to use setMatch with any collection, simply define the `liveSync` property in the collection's declaration.
+In order to use liveSync with any collection, simply define the `liveSync` property in the collection's declaration.
 
     var MyCollection = Backbone.Collection.extend({
         liveSync: {
@@ -51,7 +51,7 @@ The example below fetches the models for a collection of potatoes. The contents 
     var PotatoCollection = Backbone.Collection.extend({
     	url: 'http://example.com/api/potatoes',
         liveSync: {
-        	initialize: true,		// fetch the initial potatoes immediately after collection instatiated
+        	initialize: true,		// fetch the initial potatoes immediately after collection instantiated
         	callback: 'fetch',		// call `fetch` on this collection
         	asProperty: 'complete',	// pass the callback to create the next timer as the property `complete` of an object
         	period: 2000			// fetch again 2 seconds after `complete` function called
